@@ -1,13 +1,15 @@
 const express = require('express');
-const app = express();
+
+const EducationService = require('../Service/EducationService');
+const auth = require('../Middleware/auth');
+
 const router = express.Router();
 
-router.get('/inside', (req , res) => {
-    res.send({
-        name : "Samad",
-        age : "22"
-    });
-})
+router.post("/",auth,EducationService.addEducation);
+router.get("/:educationId", EducationService.getOneEducation);
+router.get("/", EducationService.getAllEducation);
+router.delete("/:educationId", auth,EducationService.deleteEducation);
+router.put("/:educationId",auth,EducationService.updateEducation);
 
 
 module.exports = router;

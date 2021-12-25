@@ -2,6 +2,8 @@ const User = require('../Models/User');
 const mongoose = require('mongoose');
 const bCrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+const { use } = require('../Controllers/UserController');
 
 const signup = async (req,res,next) => {
     try{
@@ -51,6 +53,7 @@ const login = async (req,res,next) => {
         const user = await User.find({
             email : req.body.email
         });
+        console.log("IS IT LIST OR OBJECT",user)
         if(user.length < 1){
             return res.status(401).json({
                 message : "Auth failed"
@@ -68,7 +71,8 @@ const login = async (req,res,next) => {
                     email : user[0].email,
                     userId : user[0]._id
                 },
-                process.env.TOKEN_SECRET
+                // process.env.TOKEN_SECRET
+                "nodeinuseqoijfqfiobqbn"
                 );
                 return res.status(200).json({
                     message : "Auth success",

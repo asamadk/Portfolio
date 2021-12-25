@@ -13,6 +13,7 @@ const addExperience = async (req,res,next) => {
         technologies: req.body.technologies,
     })
     try{
+        console.log("YES",experience);
         await experience.save();
         res.status(200).json(experience);
     }catch(err){

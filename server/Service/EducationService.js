@@ -10,6 +10,7 @@ const addEducation = async (req,res,next) => {
         startDate : new Date(req.body.startDate),
         endDate : new Date(req.body.endDate)
     });
+    // console.log("HERE AT ADD EDUATION",education);
     try{
         await education.save();
         res.status(201).json(education);

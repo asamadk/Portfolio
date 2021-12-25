@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const addSkill = async (req,res,next) => {
     const skill = new Skills({
         _id : new mongoose.Types.ObjectId,
-        name : req.body.name
+        name : req.body.skill
     });
     try{
         await skill.save();
@@ -55,11 +55,12 @@ const deleteSkill = async (req,res,next) => {
 
 const updateSkill = async (req,res,next) => {
     const id = req.params.skillId;
+    // console.log(id)
   Skills.findByIdAndUpdate(
     id,
     {
-      type: req.body.type,
-      level: req.body.level,
+      name: req.body.name,
+    //   level: req.body.level,
     },
     function (err, skill) {
       if (err) {

@@ -1,7 +1,9 @@
 const Project  = require('../Models/Projects');
 const mongoose = require('mongoose');
+const path = require('path');
 
 const addProject = async (req,res,next) => {
+    
     const project = new Project({
         _id : new mongoose.Types.ObjectId,
         title: req.body.title,
